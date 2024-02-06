@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HELLO !</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <header>
+    <font face="Arial">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  </header>
+  
+  <div class="greet">
+    <p>HI Arnaud !</p>
+  </div>
+
+  <div class="page">
+
+	<div class="middle-page">
+
+  		<div class="browse">
+
+    			<div class="quick-links">
+	  			<a href="https://www.youtube.com/"><img src="{{ url_for('static', filename='youtube.png') }}" width=50px></a>
+	  			<a href="https://twitter.com/home"><img src="{{ url_for('static', filename='twitter.png') }}" width=50px></a>
+	  			<a href="https://cahier-de-prepa.fr/mp-pasteur/"><img src="{{ url_for('static', filename='cahier-de-prepa.png') }}" width=50px></a>
+	  			<a href="https://mail.google.com/mail/u/0/#all"><img src="{{ url_for('static', filename='gmail.png') }}" width=50px></a>
+    			</div>
+
+    			<div class="search">
+				<form action="#" method="post">
+        				<input type="text" name="searched" autofocus placeholder="search" value="{{ request.form['searched'] }}" required>
+    				</form>
+    			</div>
+
+  		</div>
+
+  		<div id="content" class="content">
+			<div class="news">
+				<iframe src="http://127.0.0.1:5000/news" title="World's News" frameborder="1"></iframe>
+
+  			</div>
+		</div>
+	</div>
+
+	<div class="right-page">
+
+	</div>
+  </div>
+
+</body>
+
+
+<footer>
+	<p>
+		Have a good day !
+	</p>
+</footer>
+</html>

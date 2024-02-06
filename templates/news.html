@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HELLO !</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="news">
+  <header>
+    <font face="Arial">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  </header>
+    <div class="topic">
+	<form action="#" method="post">
+        	<input type="text" name="topic" autofocus placeholder="query" value="{{ request.form['topic'] }}" required>
+    	</form>
+    </div>
+
+  <div class="content">
+	<div class="news">
+	  <div class="newscont">
+
+		<p class="title">#1 : {{ value[0][0] }}</p>
+		<p class="desc">{{ value[0][1] }}</p>
+		<a class="url" href="{{ value[0][2] }}" target=”_blank”>Source</a>
+ 		<div class="summary">
+			<form action="#" method="post">
+				<button name="summary" value="{{ value[0][2] }}">Summary</button>
+    			</form>
+    		</div>
+		
+
+		<p class="title">#2 : {{ value[1][0] }}</p>
+		<p class="desc">{{ value[1][1] }}</p>
+		<a class="url" href="{{ value[1][2] }}" target=”_blank”>Source</a>
+		<div class="summary">
+			<form action="#" method="post">
+				<button name="summary" value="{{ value[1][2] }}">Summary</button>
+    			</form>
+    		</div>
+
+
+
+		<p class="title">#3 : {{ value[2][0] }}</p>
+		<p class="desc">{{ value[2][1] }}</p>
+		<a class="url" href="{{ value[2][2] }}" target=”_blank”>Source</a>
+		<div class="summary">
+			<form action="#" method="post">
+				<button name="summary" value="{{ value[2][2] }}">Summary</button>
+    			</form>
+    		</div>
+
+		<p class="title">#4 : {{ value[3][0] }}</p>
+		<p class="desc">{{ value[3][1] }}</p>
+		<a class="url" href="{{ value[3][2] }}" target=”_blank”>Source</a>
+		<div class="summary">
+			<form action="#" method="post">
+				<button name="summary" value="{{ value[3][2] }}">Summary</button>
+    			</form>
+    		</div>
+
+		<p class="title">#5 : {{ value[4][0] }}</p>
+		<p class="desc">{{ value[4][1] }}</p>
+		<a class="url" href="{{ value[4][2] }}" target=”_blank”>Source</a>
+		<div class="summary">
+			<form action="#" method="post">
+				<button name="summary" value="{{ value[4][2] }}">Summary</button>
+    			</form>
+    		</div>
+
+	  </div>
+  	</div>
+  </div>
+</body>
+</html>
