@@ -8,13 +8,26 @@ from datetime import timedelta
 import newspaper
 import subprocess
 import tempfile
+#os.environ["SUNO_OFFLOAD_CPU"] = "True"
+#os.environ["SUNO_USE_SMALL_MODELS"] = "True"
+#from bark import SAMPLE_RATE, generate_audio, preload_models
+#from scipy.io.wavfile import write as write_wav
+# download and load all models
+#preload_models()
 
+
+#silent = True
+silent = False
+
+  
 today = date.today()
 yesterday = str(today - timedelta(days = 3))
 
-openai.organization = "" # for https://openai.com/
+openai.organization = ""
 
 client = openai.OpenAI()
+
+url = "https://newsapi.org/v2/everything"
 
 today = date.today()
 yesterday = str(today - timedelta(days = 3))
@@ -69,28 +82,32 @@ def summary_plz(url):
         proc.wait()
         tempf.seek(0)
         print()
-        m = str(tempf.read())[80:]
+        m = str(tempf.read())[79::]
         print(m)
         print()
 
     m_ = ""
     for i in m:
-        if i != '"':
+        if i != '[':
             m_ += i
         else:
             break
 
     print()
-    print(m_)
 
-    m=m_
+    m=m_[:-24]
+    print(m)
 
-    path = os.getcwd()
-    speech_file_path = path+"speech.mp3"
-    response = client.audio.speech.create(model="tts-1", voice="alloy", input=m)
+    if silent == False:
+        path = "/home/arnaud/Desktop/arnaud/code/python/web-greeter/"
+        #audio_array = generate_audio(m)
+        #write_wav(path+"speech.wav", SAMPLE_RATE, audio_array)
+        speech_file_path = path+"speech.mp3"
+        response = client.audio.speech.create(model="tts-1", voice="alloy", input=m)
 
-    response.stream_to_file(speech_file_path)
-    os.system("mpv "+ speech_file_path)
+        response.stream_to_file(speech_file_path)
+        os.system("mpv "+ speech_file_path)
+        #os.system("mpv "+ path+"speech.wav")
     return 0
 
 latest = get_news(query)
